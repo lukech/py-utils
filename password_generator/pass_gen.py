@@ -5,12 +5,17 @@
 #      - character sets
 #
 
+ALPHA   = "abcdefghijklmnopqrstuvwxyz" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+NUM     = "0123456789"
+SPECIAL = "@#$%&*"
+
 class GenPass:
     """ Generate password based on a list of rules """
-    
+
     def __init__(self):
-        self._pass_len = 6
-        self._char_set = "x"
+        self._pass_len = 8
+        self._char_set = ALPHA + NUM + SPECIAL
+
 
     @property
     def pass_len(self):
@@ -19,6 +24,14 @@ class GenPass:
     @pass_len.setter
     def pass_len(self, value):
         self._pass_len = value
+
+    @property
+    def char_set(self):
+        return self._char_set
+
+    @char_set.setter
+    def char_set(self, value):
+        self._char_set = value
 
     def passwd(self, char_set, pass_len):
         if not isinstance(char_set, str):
