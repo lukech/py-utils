@@ -23,3 +23,17 @@ def test_char_set(gen_pass):
  
     gen_pass.char_set = "abcd01@"
     assert gen_pass.char_set == "abcd01@"
+
+
+def test_passwd_len(gen_pass):
+    # Default values
+    assert len(gen_pass.passwd()) == 8
+
+    # Set password length
+    assert len(gen_pass.passwd(pass_len=10)) == 10
+
+    # Set password character set
+    assert len(gen_pass.passwd(char_set="abcdefgh0123@#")) == 10
+
+    # Set both password length and character set
+    assert len(gen_pass.passwd(pass_len=12, char_set="abcdefgh0123@#")) == 12
