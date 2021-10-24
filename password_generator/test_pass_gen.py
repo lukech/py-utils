@@ -35,5 +35,8 @@ def test_passwd_len(gen_pass):
     # Set password character set
     assert len(gen_pass.passwd(char_set="abcdefgh0123@#")) == 10
 
+    # Set password character set with a non-string value
+    assert len(gen_pass.passwd(char_set=123456)) == 10
+
     # Set both password length and character set
     assert len(gen_pass.passwd(pass_len=12, char_set="abcdefgh0123@#")) == 12

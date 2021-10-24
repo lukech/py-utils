@@ -42,15 +42,19 @@ class GenPass:
         if pass_len:
             self.pass_len = pass_len
 
-        if char_set:        
-            if not isinstance(char_set, str):
-                self.char_set = str(char_set)
+        if char_set:
+            self.char_set = char_set if isinstance(char_set, str) else str(char_set)
+            # if not isinstance(char_set, str):
+            #     self.char_set = str(char_set)
+            # else:
+            #     self.char_set = char_set
         
         password = []
 
         # Randomly pick one character from the set each time
         for i in range(self.pass_len):
             password.append(random.choice(self.char_set))
-            print(f"password list: {password}")
+            
+        print(f"password list: {password}")
         
         return password
